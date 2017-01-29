@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.smarttechie</groupId>
+	<artifactId>Gatling-maven-demo</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>Gatling-maven-demo</name>
+	<description>Demo project for Spring Boot</description>
+
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<gatling.version>2.2.3</gatling.version>
+		<gatling-plugin.version>2.2.1</gatling-plugin.version>
+		<scala-maven-plugin.version>3.2.2</scala-maven-plugin.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>io.gatling.highcharts</groupId>
+			<artifactId>gatling-charts-highcharts</artifactId>
+			<version>${gatling.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>net.alchim31.maven</groupId>
+				<artifactId>scala-maven-plugin</artifactId>
+				<version>${scala-maven-plugin.version}</version>
+			</plugin>
+			<plugin>
+				<groupId>io.gatling</groupId>
+				<artifactId>gatling-maven-plugin</artifactId>
+				<version>${gatling-plugin.version}</version>
+				<executions>
+					<execution>
+						<configuration>
+							<configFolder>src/test/resources</configFolder>
+							<dataFolder>src/test/resources/data</dataFolder>
+							<resultsFolder>src/test/results</resultsFolder>
+							<requestBodiesFolder>src/test/resources/bodies</requestBodiesFolder>
+							<simulationsFolder>src/test/simulations</simulationsFolder>
+							<runMultipleSimulations>true</runMultipleSimulations>
+						</configuration>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
